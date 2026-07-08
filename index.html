@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We've Moved!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #0f172a; /* Dark sleek background */
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 40px 30px;
+            background: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid #334155;
+        }
+
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #38bdf8; /* Vibrant accent color */
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .redirect-box {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #38bdf8;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .countdown {
+            font-weight: bold;
+            color: #f43f5e; /* Eye-catching red/pink for the timer */
+            font-size: 1.3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #38bdf8;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+        }
+
+        /* Simple floating animation for visual style */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon">🚀</div>
+        <h1>We've Moved!</h1>
+        <p>This version of the website is no longer available. We have upgraded and shifted to a brand new home to serve you better.</p>
+        
+        <div class="redirect-box">
+            <span>Wait, redirecting you in <span id="timer" class="countdown">10</span> seconds...</span>
+        </div>
+
+        <div>
+            <p style="font-size: 0.9rem; margin-bottom: 10px;">Not redirecting? Click the link below:</p>
+            <a id="destination-link" href="https://nexorawebsite.com.ng" class="btn">Go to New Site</a>
+        </div>
+    </div>
+
+    <script>
+        // URL configuration - Change this to your actual new website link
+        const targetURL = "https://nexorawebsite.com.ng";
+        
+        // Update the button link programmatically just in case
+        document.getElementById('destination-link').href = targetURL;
+
+        let timeLeft = 10;
+        const timerElement = document.getElementById('timer');
+
+        // Countdown interval loop
+        const countdownInterval = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                timerElement.textContent = "0";
+                // Perform the redirection
+                window.location.href = targetURL;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
